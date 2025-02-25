@@ -1,0 +1,173 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background: linear-gradient(135deg, #a1fffe, #e0c7f0, #8d78e2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #181619;
+  text-align: center;
+  padding: 0 20px;
+  overflow-x: hidden;
+  width: 100vw;
+  position: relative;
+}
+
+/* Main Header */
+.main-header {
+  margin: 50px 0 10px;
+  width: 100%;
+}
+
+.main-header h1 {
+  font-size: 3.5em;
+  margin-bottom: 0;
+}
+
+.subtitle {
+  color: rgba(24, 22, 25, 0.5);
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  font-weight: lighter;
+}
+
+/* App Links */
+.app-links {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  transform: translateY(-42px);
+}
+
+.app-links img {
+  width: 220px;
+  height: auto;
+  /* border-radius: 1rem; */
+  /* object-fit: cover; */
+  /* border: solid 2px rgba(60, 60, 60, 0.5); */
+}
+
+/* Phone Mockup and Floating Icons */
+.phone-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  position: relative;
+  transform: translateY(-2rem);
+}
+
+.phone-mockup {
+  max-width: 700px;
+  min-width: 250px;
+}
+
+.phone-mockup img {
+  width: 65%;
+  border-radius: 30px;
+}
+
+/* Floating Icons */
+.floating-icons img {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2))
+    drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: -1.8rem;
+  border-radius: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.icon-float-rotate {
+  transform: rotate(0deg) !important; /* Default value; can be overridden by JS */
+}
+
+.left, .right {
+  width: 500px;
+  height: fit-content;
+  padding: 3.5rem;
+  position: absolute;
+  z-index: 1;
+}
+
+.left {
+  left: 0;
+  top: 0;
+}
+
+.right {
+  right: 0;
+  top: 0;
+  transform: translateX(-25%);
+}
+
+/* Zigzag arrangement */
+.floating-icons.left img:nth-child(odd) {
+  margin-left: 0;
+}
+
+.floating-icons.left img:nth-child(even) {
+  align-self: flex-end;
+}
+
+.floating-icons.right img:nth-child(odd) {
+  margin-right: 0;
+}
+
+.floating-icons.right img:nth-child(even) {
+  align-self: flex-start;
+}
+
+/* Floating Icons Animation */
+.icon-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 980px) {
+  .left, .right {
+    width: 50px;
+    padding: 0;
+  }
+
+  .right {
+    right: 20%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-image {
+    width: 200px;
+  }
+
+  .main-header h1 {
+    font-size: 3.5em;
+  }
+
+  .app-links img {
+    width: 170px;
+  }
+}
