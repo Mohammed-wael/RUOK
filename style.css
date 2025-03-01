@@ -87,6 +87,7 @@ body {
   margin-bottom: -1.8rem;
   border-radius: 1rem;
   border: 2px solid rgba(255, 255, 255, 0.5);
+  opacity: .7;
 }
 
 .icon-float-rotate {
@@ -159,6 +160,9 @@ body {
 }
 
 @media (max-width: 768px) {
+  .floating-icons img {
+    opacity: .4;
+  }
   .card-image {
     width: 200px;
   }

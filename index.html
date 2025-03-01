@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RUOK Landing Page</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  
+  <body>
+    <!-- Left Icons -->
+    <div class="floating-icons left"></div>
+
+    <!-- Right Icons -->
+    <div class="floating-icons right"></div>
+
+    <!-- Main Header -->
+    <div class="main-header">
+      <h1>Hi, r-u-o-k?</h1>
+      <p class="subtitle">Made for everyone, to check on anyone.</p>
+    </div>
+
+    <!-- Phone Mockup and Icons -->
+    <div class="phone-container">
+      <!-- Phone Mockup -->
+      <div class="phone-mockup">
+        <img src="./RUOK PICS/new-phone-mockup.png" alt="Phone Mockup" />
+      </div>
+    </div>
+
+    <!-- App Links -->
+    <div class="app-links">
+      <img src="google-play.png" alt="Google Play" />
+      <img src="app-store.png" alt="App Store" />
+    </div>
+
+    <p
+      class="subtitle"
+      style="
+        margin: -2rem 0 4rem;
+        font-size: 1.3em;
+        font-weight: 350;
+        color: rgba(24, 22, 25, 0.7);
+      "
+    >
+      Download To Check in on your friends and loved ones with a tap.
+    </p>
+
+   
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const leftContainer = document.querySelector(".floating-icons.left");
+        const rightContainer = document.querySelector(".floating-icons.right");
+
+        function generateIcons(container, start, end) {
+          for (let i = start; i <= end; i++) {
+            const img = document.createElement("img");
+            img.src = `./RUOK PICS/${i}.png`;
+            img.alt = `Floating Icon ${i}`;
+            img.classList.add("icon-float");
+            img.style.position = "sticky";
+            img.style.top = 0;
+
+            // Generate a random translateX value between 0% and 100%
+            let randomTranslateX;
+            if (i % 2 === 1) {
+              randomTranslateX = Math.floor(Math.random() * 100); // 0 to 49
+            } else {
+              randomTranslateX = Math.floor(Math.random() * 41) + 65; // 50 to 90
+            }
+
+            img.style.marginLeft = `${randomTranslateX}%`;
+
+            // Generate a random rotation angle between -30 and 30 degrees
+            const randomRotation = Math.floor(Math.random() * 61) - 30; // -30 to 30
+            img.style.transform = `rotate(${randomRotation}deg)`;
+
+            img.setAttribute(
+              "style",
+              `transform: rotate(${randomRotation}deg) !important; position: sticky; top: 0; margin-left: ${randomTranslateX}%;`
+            );
+
+            container.appendChild(img);
+          }
+        }
+
+        // Generate icons for left and right sides
+        generateIcons(leftContainer, 1, 13);
+        generateIcons(rightContainer, 14, 26);
+
+        // Listen for scroll and adjust icons that reach the top
+        window.addEventListener("scroll", () => {
+          document.querySelectorAll(".icon-float").forEach((icon) => {
+            const rect = icon.getBoundingClientRect();
+            if (rect.top <= 0 && !icon.classList.contains("gathered")) {
+              icon.classList.add("gathered");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
